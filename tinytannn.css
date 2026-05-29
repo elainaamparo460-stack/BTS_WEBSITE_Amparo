@@ -1,0 +1,412 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800;900&display=swap');
+
+:root{
+    --primary:#6d21d2;
+}
+
+/* RESET */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+body{
+    background:#fff;
+    color:#111;
+    overflow-x:hidden;
+}
+
+body.menu-open{
+    overflow:hidden;
+}
+
+/* HEADER */
+.header{
+    position:fixed;
+    top:0;
+    width:100%;
+    padding:20px 48px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    z-index:1000;
+    background:rgba(255,255,255,0.98);
+}
+
+.header .logo img{
+    height:70px;
+}
+
+.header .menu-btn{
+    font-size:32px;
+    cursor:pointer;
+    background:none;
+    border:none;
+    color:#111;
+    transition:.3s;
+}
+
+.header .menu-btn:hover{
+    color:var(--primary);
+}
+
+/* SOCIALS */
+.socials-main {
+  position: fixed;
+  left: 48px;
+  bottom: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  z-index: 1500;
+}
+.socials-main a { font-size: 22px; color: #111; text-decoration: none; transition: 0.3s; }
+.socials-main a:hover { transform: translateX(6px); color:  #6d21d2; }
+
+/* MENU */
+.menu-overlay{
+    position:fixed;
+    inset:0;
+    background:#fff;
+    transform:translateY(-100%);
+    transition:.5s ease;
+    z-index:2000;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+.menu-overlay.open{
+    transform:translateY(0);
+}
+
+.menu-header{
+    position:absolute;
+    top:20px;
+    left:48px;
+    right:48px;
+    display:flex;
+    justify-content:space-between;
+}
+
+.close-btn{
+    font-size:60px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.close-btn:hover{
+    color:var(--primary);
+    transform:rotate(90deg);
+}
+
+/* LINKS */
+.menu-links{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  display:flex;
+  flex-direction:column;
+  gap:24px;
+}
+
+.menu-links a{
+  font-size:34px;
+  font-weight:900;
+  color:#111;
+  text-decoration:none;
+  transition:0.25s;
+}
+
+.menu-links a:hover{
+  transform:translateX(8px);
+  color:#8a5cff;
+}
+/* SOCIALS */
+.menu-socials{
+  position:absolute;
+  left:48px;
+  bottom:80px;
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+
+.menu-socials a{
+  color:#111;
+  transition:0.25s;
+}
+
+.menu-socials a:hover{
+  color:#8a5cff;
+  transform:translateX(6px);
+}
+
+.menu-socials i{
+  font-size:22px;
+}
+
+/* COPYRIGHT */
+.menu-copyright{
+  position:absolute;
+  right:48px;
+  bottom:32px;
+  font-size:12px;
+  font-weight:900;
+  color:#111;
+}
+
+/* MAIN */
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:160px 48px 80px;
+    text-align:center;
+}
+
+/* HERO */
+.hero-title{
+    font-size:80px;
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:-2px;
+    opacity:0;
+    animation:fadeDown .8s ease forwards;
+}
+
+.hero-sub{
+    font-size:14px;
+    letter-spacing:6px;
+    color:var(--primary);
+    font-weight:700;
+    text-transform:uppercase;
+    margin-bottom:80px;
+    opacity:0;
+    animation:fadeUp .8s ease .2s forwards;
+}
+
+/* TITLES */
+.section-header,
+.v-title{
+    color:var(#111);
+    font-weight:900;
+    text-transform:uppercase;
+}
+
+/* MEMBERS */
+.members-row{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    gap:15px;
+    margin-bottom:100px;
+}
+
+.member-box{
+    border:1.5px solid #eee;
+    padding:30px 10px;
+    cursor:pointer;
+    position:relative;
+    overflow:hidden;
+    transition:.35s ease;
+}
+
+/* hover lift */
+.member-box:hover,
+.member-box.active{
+    transform:translateY(-6px);
+    border-color:var(--primary);
+}
+
+/* overlay */
+.member-box::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:var(--primary);
+    transform:translateY(100%);
+    transition:.35s ease;
+    z-index:1;
+}
+
+.member-box:hover::after,
+.member-box.active::after{
+    transform:translateY(0);
+}
+
+/* =============================================
+   CHARACTER FLOAT ANIMATION — FIXED
+   Gumagamit ng CSS custom property --lift
+   para hindi ma-override ng hover ang floatY.
+   ============================================= */
+.char-wrap{
+    display:inline-block;
+    position:relative;
+    z-index:2;
+    --lift:0px;
+    animation:floatY 3s ease-in-out infinite;
+    will-change:transform;
+}
+
+/* Sa hover: palitan lang ang --lift value,
+   WALA nang transform na mag-o-override. */
+.member-box:hover .char-wrap,
+.member-box.active .char-wrap{
+    --lift:-6px;
+}
+
+.member-box img{
+    width:90%;
+    transition:.3s ease;
+}
+
+/* TEXT */
+.member-name,
+.member-desc{
+    position:relative;
+    z-index:2;
+}
+
+.member-name{
+    font-size:12px;
+    font-weight:700;
+    margin-top:8px;
+}
+
+.member-desc{
+    font-size:11px;
+    color:#888;
+    margin-top:4px;
+}
+
+/* hover text */
+.member-box:hover .member-name,
+.member-box.active .member-name{
+    color:#4d2849;
+}
+
+.member-box:hover .member-desc,
+.member-box.active .member-desc{
+    color:#eee;
+}
+
+/* VIDEOS */
+.video-grid{
+    display:grid;
+    gap:25px;
+    margin-bottom:50px;
+}
+
+.v-2{grid-template-columns:1fr 1fr;}
+.v-3{grid-template-columns:1fr 1fr 1fr;}
+
+.video-item{
+    cursor:pointer;
+}
+
+.video-item img{
+    width:100%;
+    aspect-ratio:16/9;
+    object-fit:cover;
+    border-radius:4px;
+    transition:.3s;
+}
+
+.video-item:hover img{
+    transform:translateY(-5px);
+    opacity:.85;
+}
+
+.video-info{
+    margin-top:8px;
+    text-align:left;
+    font-size:13px;
+}
+
+/* PROMO */
+.promo-row{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    margin-bottom:50px;
+}
+
+.promo-row img{
+    width:100%;
+    height:240px;
+    object-fit:cover;
+    border-radius:6px;
+    border:1.5px solid #eee;
+    transition:.4s;
+}
+
+.promo-row img:hover{
+    transform:translateY(-10px) scale(1.03);
+}
+
+/* INTRO */
+.intro-banner{
+    background:linear-gradient(to bottom,#fff,#f9f5ff);
+    padding:80px 48px 40px;
+    text-align:center;
+}
+
+.intro-banner h2{
+    font-size:48px;
+    font-weight:900;
+    color:var(--primary);
+    margin-bottom:25px;
+}
+
+.intro-banner p{
+    font-size:16px;
+    color:#555;
+    max-width:700px;
+    margin:0 auto 40px;
+    line-height:1.6;
+}
+
+/* FOOTER */
+.footer-copy{
+    text-align:right;
+    padding:24px 48px;
+    font-size:11px;
+    font-weight:900;
+    border-top:1px solid #ddd;
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp{
+    from{opacity:0;transform:translateY(25px);}
+    to{opacity:1;transform:translateY(0);}
+}
+
+@keyframes fadeDown{
+    from{opacity:0;transform:translateY(-25px);}
+    to{opacity:1;transform:translateY(0);}
+}
+
+/* FIXED floatY — gumagamit ng --lift custom property
+   para tuloy-tuloy ang animation kahit may hover. */
+@keyframes floatY{
+    0%,100%{ transform:translateY(var(--lift, 0px)); }
+    50%     { transform:translateY(calc(var(--lift, 0px) - 10px)); }
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+    .members-row{grid-template-columns:repeat(4,1fr);}
+    .v-2,.v-3,.promo-row{grid-template-columns:1fr;}
+    .socials-main{display:none;}
+}
+
+@media(max-width:600px){
+    .members-row{grid-template-columns:repeat(2,1fr);}
+    .container{padding:140px 20px 60px;}
+    .hero-title{font-size:42px;}
+    .header{padding:16px 20px;}
+    .promo-row{grid-template-columns:1fr 1fr;}
+}

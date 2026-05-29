@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;800;900&display=swap');
+
+:root{
+    --primary:#6d21d2;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#fff;
+    color:#111;
+    overflow-x:hidden;
+}
+
+.top-header{
+    width:100%;
+    padding:50px 70px 20px;
+    position:relative;
+}
+
+.back-btn{
+    position:absolute;
+    left:70px;
+    top:58px;
+    text-decoration:none;
+    color:#111;
+    font-size:14px;
+    font-weight:700;
+    transition:.3s;
+}
+
+.back-btn:hover{
+    color:var(--primary);
+    transform:translateX(-4px);
+}
+
+.title-wrap{
+    text-align:center;
+}
+
+.title-wrap h1{
+    font-size:60px;
+    font-weight:900;
+    color:var(--primary);
+    letter-spacing:-2px;
+}
+
+.title-wrap p{
+    margin-top:8px;
+    font-size:13px;
+    letter-spacing:5px;
+    color:#777;
+}
+
+.album-container{
+    max-width:1450px;
+    margin:auto;
+    padding:40px 60px 80px;
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+}
+
+.album-card{
+    overflow:hidden;
+    border:2px solid #eee;
+    background:#fff;
+    transition:.35s ease;
+}
+
+.album-card:hover{
+    transform:translateY(-8px);
+    border-color:var(--primary);
+    box-shadow:0 12px 28px rgba(0,0,0,0.08);
+}
+
+.album-card img{
+    width:100%;
+    height:350px;
+    object-fit:cover;
+    display:block;
+    transition:.4s ease;
+}
+
+.album-card:hover img{
+    transform:scale(1.06);
+}
+
+
+.empty-box{
+    grid-column:1/-1;
+    padding:100px 20px;
+    text-align:center;
+    border:2px dashed #ddd;
+    color:#777;
+    font-size:18px;
+    font-weight:600;
+}
+
+.footer{
+    border-top:1px solid #eee;
+    padding:25px 60px;
+    text-align:right;
+    font-size:11px;
+    font-weight:800;
+}
+
+@media(max-width:1100px){
+
+    .album-container{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+}
+
+@media(max-width:800px){
+
+    .album-container{
+        grid-template-columns:repeat(2,1fr);
+        padding:30px 20px 60px;
+    }
+
+    .title-wrap h1{
+        font-size:40px;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .album-container{
+        grid-template-columns:1fr;
+    }
+
+    .top-header{
+        padding:40px 20px 10px;
+    }
+
+    .back-btn{
+        left:20px;
+        top:45px;
+    }
+
+    .title-wrap h1{
+        font-size:30px;
+    }
+
+}
